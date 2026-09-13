@@ -1,0 +1,666 @@
+.manageBlogPage {
+  min-height: 100vh;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  overflow-x: hidden;
+}
+
+
+/* =================================
+   MAIN CONTAINER
+================================= */
+
+.manageBlogContainer {
+  position: relative;
+
+  width: min(1200px, 90%);
+
+  margin: 0 auto;
+
+  padding: 58px 0 90px;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.manageHero {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-bottom: 42px;
+
+  animation: manageHeroEnter 0.65s ease both;
+}
+
+
+.manageHeroContent {
+  max-width: 700px;
+}
+
+
+.manageEyebrow {
+  display: inline-block;
+
+  margin-bottom: 16px;
+
+  color: var(--red);
+
+  font-family: var(--mono);
+
+  font-size: 0.64rem;
+
+  letter-spacing: 0.1em;
+}
+
+
+.manageHero h1 {
+  margin: 0;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: clamp(2.5rem, 5vw, 4.3rem);
+
+  font-weight: 800;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.055em;
+}
+
+
+.manageHero h1 span {
+  color: var(--red);
+}
+
+
+.manageHeroContent p {
+  max-width: 600px;
+
+  margin: 20px 0 0;
+
+  color: var(--gray);
+
+  font-family: var(--font);
+
+  font-size: 0.94rem;
+
+  line-height: 1.75;
+}
+
+
+/* =================================
+   CREATE BUTTON
+================================= */
+
+.createBlogBtn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  flex-shrink: 0;
+
+  padding: 12px 17px;
+
+  border: 1px solid var(--red);
+
+  border-radius: 11px;
+
+  background: var(--red);
+
+  color: var(--white);
+
+  font-family: var(--font);
+
+  font-size: 0.76rem;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow: 0 9px 25px rgba(229, 57, 53, 0.15);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.createBlogBtn span {
+  font-size: 1.15rem;
+
+  line-height: 1;
+}
+
+
+.createBlogBtn:hover {
+  transform: translateY(-3px);
+
+  background: var(--darkRed);
+
+  box-shadow: 0 13px 30px rgba(229, 57, 53, 0.22);
+}
+
+
+/* =================================
+   STATS
+================================= */
+
+.manageStats {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 65px;
+}
+
+
+.manageStatCard {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 15px;
+
+  background: var(--white);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.manageStatCard:hover {
+  transform: translateY(-3px);
+
+  border-color: #e5caca;
+
+  box-shadow: 0 12px 30px rgba(70, 25, 25, 0.06);
+}
+
+
+.statIcon {
+  width: 39px;
+  height: 39px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: var(--lightRed);
+
+  color: var(--darkRed);
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+}
+
+
+.manageStatCard strong {
+  display: block;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 1.25rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+
+.manageStatCard p {
+  margin: 5px 0 0;
+
+  color: #938181;
+
+  font-family: var(--font);
+
+  font-size: 0.68rem;
+}
+
+
+/* =================================
+   BLOG SECTION
+================================= */
+
+.userBlogsSection {
+  position: relative;
+}
+
+
+.manageSectionHeader {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 25px;
+}
+
+
+.sectionKicker {
+  color: var(--red);
+
+  font-family: var(--mono);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.1em;
+}
+
+
+.manageSectionHeader h2 {
+  margin: 7px 0 6px;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 1.8rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.035em;
+}
+
+
+.manageSectionHeader p {
+  margin: 0;
+
+  color: var(--gray);
+
+  font-family: var(--font);
+
+  font-size: 0.8rem;
+}
+
+
+.blogCount {
+  padding: 8px 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+  background: var(--lighterRed);
+
+  color: var(--darkRed);
+
+  font-family: var(--mono);
+
+  font-size: 0.61rem;
+
+  white-space: nowrap;
+}
+
+
+/* =================================
+   HORIZONTAL BLOG SCROLL
+================================= */
+
+.manageBlogScroll {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+.userTotalBlog {
+  display: grid;
+
+  grid-auto-flow: column;
+
+  grid-auto-columns:
+    calc((100% - 50px) / 3);
+
+  gap: 25px;
+
+  overflow-x: auto;
+
+  padding: 5px 5px 25px;
+
+  scroll-behavior: smooth;
+
+  overscroll-behavior-x: contain;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #dfcaca transparent;
+}
+
+
+.userTotalBlog::-webkit-scrollbar {
+  height: 5px;
+}
+
+
+.userTotalBlog::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.userTotalBlog::-webkit-scrollbar-thumb {
+  background: #dfcaca;
+
+  border-radius: 999px;
+}
+
+
+.userTotalBlog::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
+
+
+/* =================================
+   SCROLL HINT
+================================= */
+
+.manageScrollHint {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 9px;
+
+  margin-top: 0;
+
+  color: #9b8989;
+
+  font-family: var(--mono);
+
+  font-size: 0.59rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.04em;
+}
+
+
+.hintLine {
+  width: 30px;
+  height: 1px;
+
+  background: #d8c7c7;
+}
+
+
+.hintArrow {
+  color: var(--red);
+
+  font-size: 0.9rem;
+}
+
+
+/* =================================
+   INFO BOX
+================================= */
+
+.manageInfo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 70px;
+
+  padding: 22px 24px;
+
+  border: 1px solid #eedede;
+
+  border-radius: 16px;
+
+  background: var(--lighterRed);
+}
+
+
+.infoIcon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background: var(--white);
+
+  color: var(--red);
+
+  font-size: 1rem;
+
+  box-shadow: 0 5px 15px rgba(70, 25, 25, 0.05);
+}
+
+
+.manageInfo h3 {
+  margin: 0 0 5px;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 0.85rem;
+
+  font-weight: 800;
+}
+
+
+.manageInfo p {
+  max-width: 750px;
+
+  margin: 0;
+
+  color: var(--gray);
+
+  font-family: var(--font);
+
+  font-size: 0.72rem;
+
+  line-height: 1.65;
+}
+
+
+/* =================================
+   ANIMATION
+================================= */
+
+@keyframes manageHeroEnter {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+
+  .manageHero {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .createBlogBtn {
+    align-self: flex-start;
+  }
+
+
+  .manageStats {
+    grid-template-columns: repeat(2, 1fr);
+
+    margin-bottom: 55px;
+  }
+
+
+  .userTotalBlog {
+    grid-auto-columns:
+      calc((100% - 25px) / 2);
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+
+  .manageBlogContainer {
+    width: 90%;
+
+    padding: 38px 0 60px;
+  }
+
+
+  .manageHero {
+    margin-bottom: 32px;
+  }
+
+
+  .manageHero h1 {
+    font-size: 2.5rem;
+  }
+
+
+  .manageHeroContent p {
+    font-size: 0.85rem;
+
+    line-height: 1.7;
+  }
+
+
+  .createBlogBtn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+
+  .manageStats {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 45px;
+  }
+
+
+  .manageStatCard {
+    padding: 14px;
+
+    gap: 10px;
+  }
+
+
+  .statIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .manageStatCard strong {
+    font-size: 1rem;
+  }
+
+
+  .manageStatCard p {
+    font-size: 0.6rem;
+  }
+
+
+  .manageSectionHeader {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+
+  .manageSectionHeader h2 {
+    font-size: 1.5rem;
+  }
+
+
+  .userTotalBlog {
+    grid-auto-columns: 85%;
+
+    gap: 16px;
+
+    padding-bottom: 18px;
+  }
+
+
+  .manageScrollHint {
+    justify-content: center;
+
+    margin-top: 2px;
+  }
+
+
+  .manageInfo {
+    align-items: flex-start;
+
+    margin-top: 50px;
+
+    padding: 18px;
+  }
+
+}

@@ -6,6 +6,8 @@ import Rough from './common/Rough'
 import Homepage from './user/Homepage'
 import BlogCreate from './user/BlogCreate'
 import Feed from './user/Feed'
+import Blog from './user/Blog'
+import ManageBlog from './user/ManageBlog'
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
       <Route path='/home' element={<Homepage/>}/>
       <Route path='/create' element={<BlogCreate/>}/>
       <Route path='/feed' element={<Feed/>}/>
+      <Route path='/feed/' element={<Blog/>}/>
+      <Route path='/blog/manage' element={<ManageBlog/>}/>
 
 
 
