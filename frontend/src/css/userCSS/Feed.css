@@ -1,0 +1,670 @@
+.feedPage {
+  position: relative;
+  min-height: calc(100vh - 70px);
+
+  padding: 55px 0 80px;
+
+  background: var(--white);
+
+  overflow: hidden;
+}
+
+
+/* =================================
+   BACKGROUND DECORATION
+================================= */
+
+.feedGlow {
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  background: var(--lightRed);
+
+  filter: blur(2px);
+
+  opacity: 0.65;
+
+  pointer-events: none;
+
+  animation: feedFloat 7s ease-in-out infinite;
+}
+
+.feedGlowOne {
+  top: -150px;
+  right: -100px;
+}
+
+.feedGlowTwo {
+  top: 420px;
+  left: -230px;
+
+  width: 280px;
+  height: 280px;
+
+  opacity: 0.45;
+
+  animation-delay: 1.5s;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.feedHero {
+  position: relative;
+
+  width: min(1200px, 90%);
+
+  margin: 0 auto 65px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  z-index: 1;
+
+  animation: feedHeroEnter 0.7s ease both;
+}
+
+
+.feedHeroContent {
+  max-width: 720px;
+}
+
+
+.feedEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 20px;
+
+  color: var(--darkRed);
+
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+
+  letter-spacing: 0.08em;
+}
+
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--red);
+
+  box-shadow: 0 0 0 5px var(--lightRed);
+
+  animation: dotPulse 2s infinite;
+}
+
+
+.feedHero h1 {
+  margin: 0;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: clamp(2.6rem, 5vw, 4.7rem);
+
+  font-weight: 800;
+
+  letter-spacing: -0.055em;
+
+  line-height: 1.04;
+}
+
+
+.feedHero h1 span {
+  color: var(--red);
+}
+
+
+.feedHeroContent > p {
+  max-width: 620px;
+
+  margin: 23px 0 0;
+
+  color: var(--gray);
+
+  font-family: var(--font);
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+}
+
+
+/* =================================
+   STATS
+================================= */
+
+.feedHeroStats {
+  display: flex;
+  align-items: center;
+
+  padding: 17px 20px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 10px 30px rgba(70, 25, 25, 0.05);
+
+  flex-shrink: 0;
+}
+
+
+.feedStat {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.feedStat strong {
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+
+.feedStat span {
+  color: #958383;
+
+  font-family: var(--mono);
+
+  font-size: 0.6rem;
+
+  text-transform: uppercase;
+}
+
+
+.feedStatDivider {
+  width: 1px;
+  height: 35px;
+
+  margin: 0 20px;
+
+  background: var(--border);
+}
+
+
+/* =================================
+   BLOG SECTION
+================================= */
+
+.blogFeedSection {
+  position: relative;
+
+  width: min(1200px, 90%);
+
+  margin: 0 auto;
+
+  z-index: 1;
+}
+
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 28px;
+}
+
+
+.sectionKicker {
+  color: var(--red);
+
+  font-family: var(--mono);
+
+  font-size: 0.65rem;
+  font-weight: 500;
+
+  letter-spacing: 0.1em;
+}
+
+
+.sectionHeader h2,
+.topicsHeading h2 {
+  margin: 7px 0 7px;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 1.75rem;
+
+  font-weight: 800;
+
+  letter-spacing: -0.035em;
+}
+
+
+.sectionHeader p {
+  margin: 0;
+
+  color: var(--gray);
+
+  font-family: var(--font);
+
+  font-size: 0.86rem;
+}
+
+
+.exploreBtn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 0.76rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.exploreBtn span {
+  color: var(--red);
+
+  transition: transform 0.25s ease;
+}
+
+
+.exploreBtn:hover {
+  background: var(--red);
+
+  color: var(--white);
+
+  border-color: var(--red);
+
+  transform: translateY(-2px);
+}
+
+
+.exploreBtn:hover span {
+  color: var(--white);
+
+  transform: translateX(4px);
+}
+
+
+/* =================================
+   HORIZONTAL BLOG FEED
+================================= */
+
+.blogScrollWrapper {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+
+.blogSection {
+  display: grid;
+
+  grid-auto-flow: column;
+
+  grid-auto-columns: calc(
+    (100% - 50px) / 3
+  );
+
+  gap: 25px;
+
+  overflow-x: auto;
+
+  padding: 5px 5px 25px;
+
+  scroll-behavior: smooth;
+
+  overscroll-behavior-x: contain;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #dfcaca transparent;
+}
+
+
+/* Chrome / Edge / Safari */
+
+.blogSection::-webkit-scrollbar {
+  height: 5px;
+}
+
+
+.blogSection::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.blogSection::-webkit-scrollbar-thumb {
+  background: #dfcaca;
+
+  border-radius: 999px;
+}
+
+
+.blogSection::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
+
+
+/* =================================
+   SCROLL HINT
+================================= */
+
+.feedScrollHint {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 9px;
+
+  margin-top: 2px;
+
+  color: #9b8989;
+
+  font-family: var(--mono);
+
+  font-size: 0.62rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.04em;
+}
+
+
+.scrollLine {
+  width: 32px;
+  height: 1px;
+
+  background: #d8c7c7;
+}
+
+
+.scrollArrow {
+  color: var(--red);
+
+  font-size: 0.9rem;
+}
+
+
+/* =================================
+   TOPICS
+================================= */
+
+.topicsSection {
+  position: relative;
+
+  width: min(1200px, 90%);
+
+  margin: 75px auto 0;
+
+  padding-top: 35px;
+
+  border-top: 1px solid var(--border);
+
+  z-index: 1;
+}
+
+
+.topicsHeading {
+  margin-bottom: 22px;
+}
+
+
+.topicList {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+
+.topicList button {
+  padding: 10px 16px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+  background: var(--white);
+
+  color: var(--gray);
+
+  font-family: var(--font);
+
+  font-size: 0.75rem;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.topicList button:hover {
+  background: var(--lightRed);
+
+  color: var(--darkRed);
+
+  border-color: #e7cccc;
+
+  transform: translateY(-2px);
+}
+
+
+/* =================================
+   ANIMATIONS
+================================= */
+
+@keyframes feedHeroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes feedFloat {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(18px) translateX(-10px);
+  }
+}
+
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 5px var(--lightRed);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 241, 241, 0.8);
+  }
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+
+  .feedHero {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    margin-bottom: 55px;
+  }
+
+
+  .feedHeroStats {
+    align-self: flex-start;
+  }
+
+
+  .blogSection {
+    grid-auto-columns: calc(
+      (100% - 25px) / 2
+    );
+  }
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+
+  .feedPage {
+    padding-top: 35px;
+    padding-bottom: 55px;
+  }
+
+
+  .feedHero {
+    width: 90%;
+
+    margin-bottom: 45px;
+  }
+
+
+  .feedHero h1 {
+    font-size: clamp(
+      2.25rem,
+      11vw,
+      3.2rem
+    );
+  }
+
+
+  .feedHeroContent > p {
+    font-size: 0.88rem;
+
+    line-height: 1.65;
+  }
+
+
+  .feedHeroStats {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+
+  .sectionHeader {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    margin-bottom: 22px;
+  }
+
+
+  .sectionHeader h2,
+  .topicsHeading h2 {
+    font-size: 1.45rem;
+  }
+
+
+  .exploreBtn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+
+  .blogSection {
+    grid-auto-columns: 85%;
+
+    gap: 16px;
+
+    padding-bottom: 18px;
+  }
+
+
+  .feedScrollHint {
+    justify-content: center;
+
+    margin-top: 4px;
+  }
+
+
+  .topicsSection {
+    margin-top: 55px;
+  }
+
+
+  .topicList {
+    gap: 8px;
+  }
+
+
+  .topicList button {
+    padding: 9px 13px;
+  }
+
+
+  .feedGlow {
+    opacity: 0.4;
+  }
+}

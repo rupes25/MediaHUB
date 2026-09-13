@@ -1,0 +1,807 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --red: #e53935;
+  --darkRed: #c62828;
+
+  --lightRed: #fff1f1;
+  --lighterRed: #fff8f8;
+
+  --black: #171313;
+  --gray: #716767;
+
+  --border: #eadede;
+  --white: #ffffff;
+
+  --font: "Manrope", sans-serif;
+  --mono: "DM Mono", monospace;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.homePage {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  font-family: var(--font);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* =========================
+   BACKGROUND SHAPES
+========================= */
+
+.homeShape {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.homeShapeOne {
+  width: 450px;
+  height: 450px;
+
+  right: -220px;
+  top: 80px;
+
+  background: var(--lighterRed);
+
+  animation: floatingShape 9s ease-in-out infinite;
+}
+
+.homeShapeTwo {
+  width: 280px;
+  height: 280px;
+
+  left: -150px;
+  top: 620px;
+
+  background: var(--lightRed);
+
+  animation: floatingShape 11s ease-in-out infinite reverse;
+}
+
+@keyframes floatingShape {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.homeHero {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1400px;
+
+  min-height: 470px;
+
+  margin: auto;
+
+  padding: 85px 6vw 70px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--border);
+
+  animation: heroAppear 0.8s ease both;
+}
+
+@keyframes heroAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Tag */
+
+.homeTag {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 24px;
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  color: var(--gray);
+
+  letter-spacing: 0.08em;
+}
+
+.homeTag i {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--red);
+
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.45);
+  }
+
+  70% {
+    box-shadow: 0 0 0 9px rgba(229, 57, 53, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+  }
+}
+
+
+/* Heading */
+
+.homeHero h1 {
+  font-size: clamp(4rem, 8vw, 8rem);
+
+  line-height: 0.86;
+
+  letter-spacing: -0.09em;
+
+  font-weight: 800;
+}
+
+.homeHero h1 span {
+  color: var(--red);
+
+  font-weight: 500;
+}
+
+
+/* Description */
+
+.homeHeroContent p {
+  max-width: 570px;
+
+  margin-top: 32px;
+
+  color: var(--gray);
+
+  font-size: 0.88rem;
+
+  line-height: 1.8;
+}
+
+
+/* Hero bottom */
+
+.homeHeroMeta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 65px;
+
+  font-family: var(--mono);
+
+  font-size: 0.52rem;
+
+  color: #9b9090;
+}
+
+.homeHeroMeta div {
+  width: 55px;
+
+  height: 1px;
+
+  background: #d9c4c4;
+}
+
+
+/* =========================
+   CARD SECTION
+========================= */
+
+.cardSection {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 100px 6vw;
+}
+
+
+/* Section heading */
+
+.sectionHeader {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 50px;
+
+  margin-bottom: 50px;
+}
+
+.sectionLabel {
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  color: var(--red);
+
+  letter-spacing: 0.08em;
+}
+
+.sectionHeader h2 {
+  margin-top: 15px;
+
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+
+  line-height: 0.92;
+
+  letter-spacing: -0.075em;
+}
+
+.sectionHeader > p {
+  max-width: 270px;
+
+  color: var(--gray);
+
+  font-size: 0.75rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   CARDS GRID
+========================= */
+
+.cardsGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.blogActionCard {
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  background: var(--white);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+
+  animation: cardAppear 0.7s ease both;
+}
+
+.blogActionCard:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.blogActionCard:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.blogActionCard:nth-child(3) {
+  animation-delay: 0.35s;
+}
+
+@keyframes cardAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blogActionCard:hover {
+  transform: translateY(-9px);
+
+  border-color: #dfc1c1;
+
+  box-shadow:
+    0 22px 55px rgba(70, 20, 20, 0.1);
+}
+
+
+/* Featured card */
+
+.featuredCard {
+  background: var(--lightRed);
+
+  border-color: #f0d5d5;
+}
+
+
+/* =========================
+   CARD IMAGE
+========================= */
+
+.cardImage {
+  position: relative;
+
+  width: 100%;
+
+  height: 280px;
+
+  overflow: hidden;
+
+  background: var(--lightRed);
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transition:
+    transform 0.6s ease,
+    filter 0.4s ease;
+}
+
+.blogActionCard:hover .cardImage img {
+  transform: scale(1.07);
+
+  filter: brightness(0.92);
+}
+
+
+/* Image overlay */
+
+.imageOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  padding: 18px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 10, 10, 0.25),
+      transparent 40%
+    );
+
+  font-family: var(--mono);
+
+  font-size: 0.55rem;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.cardContent {
+  min-height: 280px;
+
+  padding: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* Top */
+
+.cardTop {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+
+  font-family: var(--mono);
+
+  font-size: 0.55rem;
+
+  color: #9a8d8d;
+}
+
+.cardArrow {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--lightRed);
+
+  color: var(--red);
+
+  font-size: 1rem;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.blogActionCard:hover .cardArrow {
+  background: var(--red);
+
+  color: white;
+
+  transform: translate(3px, -3px);
+}
+
+
+/* Card title */
+
+.cardContent h3 {
+  font-size: 1.6rem;
+
+  line-height: 1;
+
+  letter-spacing: -0.055em;
+}
+
+
+/* Card description */
+
+.cardContent p {
+  max-width: 330px;
+
+  margin-top: 14px;
+
+  color: var(--gray);
+
+  font-size: 0.76rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   CARD BUTTON
+========================= */
+
+.cardButton {
+  width: 100%;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: auto;
+
+  padding: 0 14px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  background: white;
+
+  color: var(--black);
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.cardButton span {
+  color: var(--red);
+
+  transition: transform 0.25s ease;
+}
+
+.cardButton:hover {
+  border-color: var(--red);
+
+  color: var(--red);
+}
+
+.cardButton:hover span {
+  transform: translateX(5px);
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.homeBottom {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 0 6vw 60px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: var(--gray);
+}
+
+.homeBottom > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.bottomNumber {
+  color: var(--red);
+
+  font-family: var(--mono);
+
+  font-size: 0.55rem;
+}
+
+.homeBottom p {
+  font-size: 0.7rem;
+}
+
+.bottomText {
+  font-family: var(--mono);
+
+  font-size: 0.5rem;
+
+  color: #a29797;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+  .homeHero {
+    min-height: 430px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blogActionCard:last-child {
+    grid-column: span 2;
+  }
+
+  .cardImage {
+    height: 300px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .homeHero {
+    min-height: auto;
+
+    padding: 65px 7vw 55px;
+  }
+
+  .homeHero h1 {
+    font-size: clamp(4rem, 19vw, 6rem);
+  }
+
+  .homeHeroContent p {
+    font-size: 0.8rem;
+
+    margin-top: 28px;
+  }
+
+  .homeHeroMeta {
+    margin-top: 55px;
+  }
+
+
+  .cardSection {
+    padding: 75px 7vw;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+    margin-bottom: 35px;
+  }
+
+  .sectionHeader > p {
+    max-width: 350px;
+  }
+
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .blogActionCard:last-child {
+    grid-column: auto;
+  }
+
+
+  .cardImage {
+    height: 260px;
+  }
+
+
+  .cardContent {
+    min-height: 260px;
+  }
+
+
+  .homeBottom {
+    padding: 0 7vw 40px;
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+  .homeHero {
+    padding-top: 50px;
+  }
+
+  .homeHero h1 {
+    font-size: 3.7rem;
+  }
+
+  .cardSection {
+    padding-top: 60px;
+  }
+
+  .cardImage {
+    height: 230px;
+  }
+
+  .cardContent {
+    padding: 20px;
+  }
+
+  .cardContent h3 {
+    font-size: 1.4rem;
+  }
+
+}

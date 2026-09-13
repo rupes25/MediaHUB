@@ -1,0 +1,850 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --red: #e53935;
+  --darkRed: #c62828;
+
+  --lightRed: #fff1f1;
+  --lighterRed: #fff8f8;
+
+  --black: #171313;
+  --gray: #716767;
+
+  --border: #eadede;
+  --white: #ffffff;
+
+  --font: "Manrope", sans-serif;
+  --mono: "DM Mono", monospace;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.blogCreatePage {
+  position: relative;
+
+  min-height: 100vh;
+
+  background: var(--white);
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   DECORATIVE BACKGROUND
+========================= */
+
+.blogCreatePage::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  top: 250px;
+  right: -260px;
+
+  border-radius: 50%;
+
+  background: var(--lighterRed);
+
+  pointer-events: none;
+
+  animation: editorFloat 10s ease-in-out infinite;
+}
+
+.blogCreatePage::after {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  bottom: -130px;
+  left: -100px;
+
+  border-radius: 50%;
+
+  background: var(--lightRed);
+
+  pointer-events: none;
+}
+
+@keyframes editorFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+
+/* =========================
+   EDITOR WRAPPER
+========================= */
+
+.blogEditor {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1450px;
+
+  margin: auto;
+
+  padding: 80px 6vw 100px;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.editorHeading {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 50px;
+
+  padding-bottom: 60px;
+
+  border-bottom: 1px solid var(--border);
+
+  animation: headingAppear 0.7s ease both;
+}
+
+@keyframes headingAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.editorLabel {
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  color: var(--red);
+
+  letter-spacing: 0.08em;
+}
+
+
+.editorHeading h1 {
+  margin-top: 18px;
+
+  font-size: clamp(3.8rem, 7vw, 7rem);
+
+  line-height: 0.88;
+
+  letter-spacing: -0.09em;
+
+  font-weight: 800;
+}
+
+.editorHeading h1 span {
+  color: var(--red);
+
+  font-weight: 500;
+}
+
+
+.editorHeading p {
+  max-width: 560px;
+
+  margin-top: 30px;
+
+  color: var(--gray);
+
+  font-size: 0.82rem;
+
+  line-height: 1.8;
+}
+
+
+/* Heading meta */
+
+.editorMeta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+
+  padding-bottom: 8px;
+
+  font-family: var(--mono);
+
+  font-size: 0.52rem;
+
+  color: #9b9090;
+}
+
+.editorMeta div {
+  width: 45px;
+
+  height: 1px;
+
+  background: #d9c4c4;
+}
+
+.editorMeta span:last-child {
+  color: var(--red);
+}
+
+
+/* =========================
+   EDITOR LAYOUT
+========================= */
+
+.editorLayout {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) 330px;
+
+  gap: 70px;
+
+  margin-top: 65px;
+
+  animation: editorAppear 0.8s 0.1s ease both;
+}
+
+@keyframes editorAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================
+   MAIN EDITOR
+========================= */
+
+.editorMain {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 42px;
+}
+
+
+/* =========================
+   FORM FIELD
+========================= */
+
+.editorField {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.editorField label,
+.sideBlock > label,
+.contentLabel label {
+  font-family: var(--mono);
+
+  font-size: 0.57rem;
+
+  color: #766c6c;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.titleField input {
+  width: 100%;
+
+  padding: 15px 0;
+
+  border: none;
+
+  border-bottom: 2px solid var(--border);
+
+  outline: none;
+
+  background: transparent;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: clamp(2rem, 4vw, 3.8rem);
+
+  font-weight: 700;
+
+  letter-spacing: -0.06em;
+
+  transition:
+    border-color 0.25s ease;
+}
+
+.titleField input::placeholder {
+  color: #c8bebe;
+}
+
+.titleField input:focus {
+  border-color: var(--red);
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+.editorField textarea {
+  width: 100%;
+
+  padding: 15px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 11px;
+
+  outline: none;
+
+  background: #fff;
+
+  color: var(--black);
+
+  font-family: var(--font);
+
+  font-size: 0.83rem;
+
+  line-height: 1.7;
+
+  resize: vertical;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.editorField textarea::placeholder {
+  color: #b7acac;
+}
+
+.editorField textarea:hover {
+  border-color: #dfc5c5;
+}
+
+.editorField textarea:focus {
+  border-color: var(--red);
+
+  box-shadow:
+    0 0 0 3px rgba(229, 57, 53, 0.07);
+}
+
+
+/* =========================
+   CONTENT EDITOR
+========================= */
+
+.contentField textarea {
+  min-height: 450px;
+
+  padding: 25px;
+
+  border-radius: 14px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.9;
+}
+
+.contentLabel {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.contentLabel span {
+  font-family: var(--mono);
+
+  font-size: 0.5rem;
+
+  color: #a99d9d;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.editorSidebar {
+  position: sticky;
+
+  top: 100px;
+
+  height: fit-content;
+
+  padding: 24px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow:
+    0 15px 45px rgba(70, 20, 20, 0.06);
+}
+
+
+/* =========================
+   SIDE BLOCK
+========================= */
+
+.sideBlock {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  margin-bottom: 23px;
+}
+
+
+/* Inputs */
+
+.sideBlock input,
+.sideBlock select {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 13px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: white;
+
+  color: var(--black);
+
+  font-size: 0.75rem;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sideBlock input::placeholder {
+  color: #b6abab;
+}
+
+.sideBlock input:focus,
+.sideBlock select:focus {
+  border-color: var(--red);
+
+  box-shadow:
+    0 0 0 3px rgba(229, 57, 53, 0.07);
+}
+
+.sideBlock select {
+  cursor: pointer;
+}
+
+
+/* =========================
+   IMAGE UPLOAD
+========================= */
+
+.uploadBox {
+  position: relative;
+
+  min-height: 180px;
+
+  overflow: hidden;
+
+  border: 1px dashed #dfc1c1;
+
+  border-radius: 11px;
+
+  background: var(--lighterRed);
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.uploadBox:hover {
+  border-color: var(--red);
+
+  background: var(--lightRed);
+
+  transform: translateY(-2px);
+}
+
+
+/* Actual input */
+
+.uploadBox input[type="file"] {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  cursor: pointer;
+}
+
+
+/* Upload content */
+
+.uploadContent {
+  height: 180px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.uploadIcon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+
+  border-radius: 50%;
+
+  background: var(--red);
+
+  color: white;
+
+  font-size: 1.2rem;
+
+  transition: transform 0.3s ease;
+}
+
+.uploadBox:hover .uploadIcon {
+  transform: rotate(90deg);
+}
+
+.uploadContent strong {
+  font-size: 0.72rem;
+}
+
+.uploadContent span {
+  margin-top: 5px;
+
+  color: var(--gray);
+
+  font-size: 0.62rem;
+}
+
+.uploadContent small {
+  margin-top: 9px;
+
+  font-family: var(--mono);
+
+  font-size: 0.48rem;
+
+  color: #aa9d9d;
+}
+
+
+/* =========================
+   PUBLISH INFO
+========================= */
+
+.publishInfo {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding: 17px 0;
+
+  margin-bottom: 20px;
+
+  border-top: 1px solid var(--border);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.publishInfo div {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.publishInfo span {
+  font-family: var(--mono);
+
+  font-size: 0.5rem;
+
+  color: #9b9090;
+}
+
+.publishInfo strong {
+  font-size: 0.65rem;
+
+  font-weight: 600;
+}
+
+.publishInfo div:last-child strong {
+  color: var(--red);
+}
+
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.saveBlogBtn {
+  width: 100%;
+
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 17px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: var(--red);
+
+  color: white;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.saveBlogBtn strong {
+  font-size: 1rem;
+
+  transition: transform 0.25s ease;
+}
+
+.saveBlogBtn:hover {
+  background: var(--darkRed);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 25px rgba(229, 57, 53, 0.2);
+}
+
+.saveBlogBtn:hover strong {
+  transform: translate(4px, -4px);
+}
+
+.saveBlogBtn:active {
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+  .editorLayout {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .editorSidebar {
+    position: static;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+  }
+
+  .editorSidebar .sideBlock {
+    margin-bottom: 0;
+  }
+
+  .editorSidebar .sideBlock:nth-child(3) {
+    grid-column: span 2;
+  }
+
+  .publishInfo {
+    grid-column: span 2;
+  }
+
+  .saveBlogBtn {
+    grid-column: span 2;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .blogEditor {
+    padding: 60px 6vw 80px;
+  }
+
+  .editorHeading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    padding-bottom: 45px;
+  }
+
+  .editorHeading h1 {
+    font-size: clamp(3.5rem, 17vw, 5rem);
+  }
+
+  .editorHeading p {
+    font-size: 0.78rem;
+  }
+
+  .editorMeta {
+    padding-bottom: 0;
+  }
+
+  .editorLayout {
+    margin-top: 45px;
+
+    gap: 40px;
+  }
+
+  .editorMain {
+    gap: 32px;
+  }
+
+  .contentField textarea {
+    min-height: 350px;
+
+    padding: 18px;
+  }
+
+  .editorSidebar {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 20px;
+  }
+
+  .editorSidebar .sideBlock:nth-child(3),
+  .publishInfo,
+  .saveBlogBtn {
+    grid-column: auto;
+  }
+
+  .publishInfo {
+    margin-bottom: 5px;
+  }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+  .blogEditor {
+    padding: 45px 5vw 65px;
+  }
+
+  .editorHeading h1 {
+    font-size: 3.3rem;
+  }
+
+  .titleField input {
+    font-size: 1.8rem;
+  }
+
+  .contentField textarea {
+    min-height: 300px;
+  }
+}

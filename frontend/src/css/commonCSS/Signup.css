@@ -1,0 +1,667 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --red: #e53935;
+  --darkRed: #c62828;
+
+  --lightRed: #fff1f1;
+  --lighterRed: #fff8f8;
+
+  --black: #171313;
+  --gray: #716767;
+
+  --border: #eadede;
+  --white: #ffffff;
+
+  --font: "Manrope", sans-serif;
+  --mono: "DM Mono", monospace;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--black);
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.signupPage {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  overflow: hidden;
+
+  background: var(--white);
+}
+
+/* =========================
+   DECORATIVE BACKGROUND
+========================= */
+
+.signupGlow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.signupGlowOne {
+  width: 450px;
+  height: 450px;
+
+  top: -220px;
+  right: -150px;
+
+  background: var(--lighterRed);
+
+  animation: glowFloat 8s ease-in-out infinite;
+}
+
+.signupGlowTwo {
+  width: 300px;
+  height: 300px;
+
+  bottom: -160px;
+  left: 25%;
+
+  background: var(--lightRed);
+
+  animation: glowFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes glowFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 20px);
+  }
+}
+
+/* =========================
+   LEFT INTRO
+========================= */
+
+.signupIntro {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+
+  padding: 45px 6vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: var(--lightRed);
+
+  border-right: 1px solid #f0dcdc;
+
+  animation: introAppear 0.8s ease both;
+}
+
+@keyframes introAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Logo */
+
+.signupLogo {
+  width: fit-content;
+
+  font-size: 1.3rem;
+  font-weight: 800;
+
+  letter-spacing: -0.07em;
+}
+
+.signupLogo span {
+  color: var(--red);
+  font-weight: 500;
+}
+
+/* Intro content */
+
+.introContent {
+  max-width: 480px;
+}
+
+.introTag {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 25px;
+
+  font-family: var(--mono);
+
+  font-size: 0.6rem;
+
+  color: var(--gray);
+
+  letter-spacing: 0.08em;
+}
+
+.introTag i {
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: var(--red);
+
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 9px rgba(229, 57, 53, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+  }
+}
+
+.introContent h1 {
+  font-size: clamp(4rem, 7vw, 7rem);
+
+  line-height: 0.88;
+
+  letter-spacing: -0.09em;
+
+  font-weight: 800;
+}
+
+.introContent h1 span {
+  color: var(--red);
+  font-weight: 500;
+}
+
+.introContent p {
+  max-width: 420px;
+
+  margin-top: 35px;
+
+  color: var(--gray);
+
+  font-size: 0.9rem;
+
+  line-height: 1.8;
+}
+
+/* =========================
+   INTRO BOTTOM
+========================= */
+
+.introBottom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  font-family: var(--mono);
+
+  font-size: 0.55rem;
+
+  color: var(--gray);
+}
+
+.introBottom div {
+  width: 60px;
+  height: 1px;
+
+  background: #d8bebe;
+}
+
+/* =========================
+   FORM SECTION
+========================= */
+
+.signupSection {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px 7vw;
+
+  background: white;
+
+  animation: formAppear 0.8s 0.15s ease both;
+}
+
+@keyframes formAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   FORM CARD
+========================= */
+
+.signupCard {
+  width: min(100%, 510px);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.formNumber {
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  color: var(--red);
+
+  letter-spacing: 0.08em;
+}
+
+.formHeader h2 {
+  margin-top: 15px;
+
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+
+  line-height: 0.92;
+
+  letter-spacing: -0.075em;
+}
+
+.formHeader p {
+  margin-top: 20px;
+
+  color: var(--gray);
+
+  font-size: 0.78rem;
+}
+
+.formHeader p a {
+  color: var(--red);
+
+  font-weight: 700;
+
+  transition: color 0.2s ease;
+}
+
+.formHeader p a:hover {
+  color: var(--darkRed);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.signupForm {
+  margin-top: 42px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  color: #766c6c;
+
+  letter-spacing: 0.07em;
+}
+
+.inputGroup input {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fff;
+
+  color: var(--black);
+
+  font-size: 0.82rem;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.inputGroup input::placeholder {
+  color: #b6abab;
+}
+
+.inputGroup input:hover {
+  border-color: #dfc5c5;
+}
+
+.inputGroup input:focus {
+  border-color: var(--red);
+
+  background: #fffafa;
+
+  box-shadow:
+    0 0 0 3px rgba(229, 57, 53, 0.08);
+}
+
+/* Date */
+
+.inputGroup input[type="date"] {
+  color: var(--gray);
+
+  cursor: pointer;
+}
+
+/* =========================
+   USERNAME
+========================= */
+
+.usernameInput {
+  position: relative;
+}
+
+.usernameInput span {
+  position: absolute;
+
+  left: 16px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: var(--red);
+
+  font-weight: 700;
+}
+
+.usernameInput input {
+  padding-left: 34px;
+}
+
+/* =========================
+   PASSWORD NOTE
+========================= */
+
+.inputGroup small {
+  margin-top: -2px;
+
+  color: #a19797;
+
+  font-size: 0.62rem;
+}
+
+/* =========================
+   TERMS
+========================= */
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  color: var(--gray);
+
+  font-size: 0.67rem;
+
+  line-height: 1.5;
+
+  cursor: pointer;
+}
+
+.terms input {
+  width: 16px;
+  height: 16px;
+
+  margin-top: 1px;
+
+  accent-color: var(--red);
+
+  cursor: pointer;
+}
+
+.terms a {
+  color: var(--red);
+
+  font-weight: 600;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.createAccountBtn {
+  width: 100%;
+  height: 55px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: var(--red);
+
+  color: white;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.createAccountBtn strong {
+  font-size: 1.1rem;
+
+  transition: transform 0.25s ease;
+}
+
+.createAccountBtn:hover {
+  background: var(--darkRed);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 25px rgba(229, 57, 53, 0.2);
+}
+
+.createAccountBtn:hover strong {
+  transform: translate(4px, -4px);
+}
+
+.createAccountBtn:active {
+  transform: translateY(-1px);
+}
+
+/* =========================
+   SECURITY NOTE
+========================= */
+
+.secureNote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 20px;
+
+  color: #a09797;
+
+  font-family: var(--mono);
+
+  font-size: 0.55rem;
+}
+
+.secureNote span {
+  color: #4caf50;
+
+  font-size: 0.6rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .signupPage {
+    grid-template-columns: 1fr;
+  }
+
+  .signupIntro {
+    min-height: auto;
+
+    padding: 35px 7vw 55px;
+
+    border-right: none;
+    border-bottom: 1px solid #f0dcdc;
+  }
+
+  .introContent {
+    margin-top: 80px;
+  }
+
+  .introContent h1 {
+    font-size: clamp(4rem, 15vw, 7rem);
+  }
+
+  .introBottom {
+    margin-top: 70px;
+  }
+
+  .signupSection {
+    min-height: auto;
+
+    padding: 80px 7vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .signupIntro {
+    padding: 28px 6vw 45px;
+  }
+
+  .signupLogo {
+    font-size: 1.05rem;
+  }
+
+  .introContent {
+    margin-top: 65px;
+  }
+
+  .introContent h1 {
+    font-size: clamp(3.8rem, 19vw, 6rem);
+  }
+
+  .introContent p {
+    font-size: 0.8rem;
+  }
+
+  .introBottom {
+    margin-top: 55px;
+  }
+
+  .signupSection {
+    padding: 65px 6vw;
+  }
+
+  .formHeader h2 {
+    font-size: 3.3rem;
+  }
+
+  .signupForm {
+    margin-top: 35px;
+
+    gap: 19px;
+  }
+
+  .inputGroup input {
+    height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .introContent h1 {
+    font-size: 3.5rem;
+  }
+
+  .formHeader h2 {
+    font-size: 2.8rem;
+  }
+
+  .signupSection {
+    padding: 55px 5vw;
+  }
+}
