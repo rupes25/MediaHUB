@@ -1,8 +1,33 @@
-
+import api from "../api/axios";
 import "../css/commonCSS/Login.css";
+import { useState } from "react";
 
 
 const Login = () => {
+
+  const [usernameOrEmail, setUsernameOrEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+    try{
+      const response = await api.post("/login",{
+        usernameOrEmail,
+        password
+      })
+
+      console.log(response.message);
+      alert("Login successful");
+
+      setUsernameOrEmail('')
+      setPassword('')
+
+    }
+    catch(err){
+      console.log(err.message);
+      alert("Error in login.")
+    }
+  }
 
   return (
       <main className="loginPage">
@@ -68,7 +93,7 @@ const Login = () => {
           </div>
 
           {/* Form */}
-          <form className="loginForm">
+          <form className="loginForm" onSubmit={handleSubmit}>
 
             {/* Email / Username */}
             <div className="loginInputGroup">
@@ -83,6 +108,8 @@ const Login = () => {
                 required
                 autoComplete="username"
                 placeholder="Enter your email or username"
+                value={usernameOrEmail}
+                onChange={(e)=>setUsernameOrEmail(e.target.value)}
               />
             </div>
 
@@ -105,6 +132,8 @@ const Login = () => {
                 required
                 autoComplete="current-password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
 

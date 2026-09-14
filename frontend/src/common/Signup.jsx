@@ -1,6 +1,44 @@
+import api from "../api/axios";
 import "../css/commonCSS/Signup.css";
+import { useState } from "react";
 
 const Signup = () => {
+
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+
+    try{
+      const response = await api.post("/register",{
+      fullName,
+      email,
+      username,
+      password,
+      dateOfBirth
+    })
+
+    console.log(response.data);
+    alert("User registered successully.");
+
+    setFullName('');
+    setEmail('');
+    setUsername('');
+    setDateOfBirth('');
+    setPassword('');
+    }
+    catch(err){
+      console.log(err.message);
+      alert("Error in registering user.")
+    }
+  }
+
+
+
   return (
     <main className="signupPage">
       {/* Decorative background */}
@@ -59,7 +97,7 @@ const Signup = () => {
             </p>
           </div>
 
-          <form className="signupForm">
+          <form className="signupForm" onSubmit={handleSubmit}>
             {/* Full name */}
             <div className="inputGroup">
               <label htmlFor="fName">
@@ -73,6 +111,8 @@ const Signup = () => {
                 required
                 autoComplete="name"
                 placeholder="Enter your full name"
+                value={fullName}
+                onChange={(e)=>setFullName(e.target.value)}
               />
             </div>
 
@@ -89,6 +129,8 @@ const Signup = () => {
                 required
                 autoComplete="email"
                 placeholder="you@example.com"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </div>
 
@@ -108,6 +150,8 @@ const Signup = () => {
                   required
                   autoComplete="username"
                   placeholder="yourusername"
+                  value={username}
+                onChange={(e)=>setUsername(e.target.value)}
                 />
               </div>
             </div>
@@ -123,6 +167,8 @@ const Signup = () => {
                 name="dateOfBirth"
                 type="date"
                 required
+                value={dateOfBirth}
+                onChange={(e)=>setDateOfBirth(e.target.value)}
               />
             </div>
 
@@ -139,6 +185,8 @@ const Signup = () => {
                 required
                 autoComplete="new-password"
                 placeholder="Create a strong password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
               />
 
               <small>
