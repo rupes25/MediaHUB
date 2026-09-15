@@ -13,11 +13,10 @@ const BlogCreate = () => {
   const [images, setImages] = useState([])
 
 
-
-  const handleImageChange = (e)=>{
+  const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
 
-    if(files.length < 5){
+    if (files.length < 5) {
       alert("Please upload atleast 5 images.")
       return;
     }
@@ -25,24 +24,23 @@ const BlogCreate = () => {
 
   }
 
-
-  const uploadToCloudinary = async() =>{
+  const uploadToCloudinary = async () => {
     const uploadedUrls = [];
 
-    for(const image of images){
+    for (const image of images) {
       const formData = new formData();
-      formData.append("images",image)   // here "images" is the key
-      formData.append("upload_preset",import.meta.env.CLOUDINARY_UPLOAD_PRESET);
+      formData.append("images", image)   // here "images" is the key
+      formData.append("upload_preset", import.meta.env.CLOUDINARY_UPLOAD_PRESET);
 
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,{
-        method:"POST",
-        body:formData,
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+        method: "POST",
+        body: formData,
       });
 
       const data = await response.json();
 
-      if(!response.ok){
-         throw new Error(data.error?.message || "Cloudinary upload failed");
+      if (!response.ok) {
+        throw new Error(data.error?.message || "Cloudinary upload failed");
       }
 
       uploadedUrls.push(data.secure_url);
@@ -52,18 +50,13 @@ const BlogCreate = () => {
   };
 
 
-
-
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (images.length < 5) {
-    alert("Please upload at least 5 images.");
-    return;
-  }
+      alert("Please upload at least 5 images.");
+      return;
+    }
 
     try {
       const imageUrls = await uploadToCloudinary();
@@ -73,7 +66,7 @@ const BlogCreate = () => {
         content,
         category,
         author,
-        images:imageUrls,
+        images: imageUrls,
       });
 
       console.log(response.data)
