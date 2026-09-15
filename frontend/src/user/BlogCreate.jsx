@@ -26,13 +26,21 @@ const BlogCreate = () => {
 
   const uploadToCloudinary = async () => {
     const uploadedUrls = [];
+    const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+    const uploadPreset =
+      import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET ||
+      import.meta.env.CLOUDINARY_UPLOAD_PRESET;
+
+    if (!cloudName || !uploadPreset) {
+      throw new Error("Cloudinary configuration is missing.");
+    }
 
     for (const image of images) {
-      const formData = new formData();
-      formData.append("images", image)   // here "images" is the key
-      formData.append("upload_preset", import.meta.env.CLOUDINARY_UPLOAD_PRESET);
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("upload_preset", uploadPreset);
 
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
         method: "POST",
         body: formData,
       });
@@ -46,7 +54,6 @@ const BlogCreate = () => {
       uploadedUrls.push(data.secure_url);
     }
     return uploadedUrls;
-
   };
 
 

@@ -1,5 +1,6 @@
 const express = require("express");
 const authenticationRoutes = require("./routes/authentication.routes")
+const blogRoutes = require("../src/routes/blog.routes")
 const cors = require("cors")
 
 
@@ -20,6 +21,7 @@ app.use(cors(
 )
 
 app.use("/", authenticationRoutes)
+app.use("/", blogRoutes)
 
 
 
