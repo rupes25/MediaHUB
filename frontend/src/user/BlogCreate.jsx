@@ -1,7 +1,100 @@
 import Navbar from "../components/Navbar";
 import '../css/userCSS/BlogCreate.css'
+import { useState } from "react";
+import api from '../api/axios.js'
+
 
 const BlogCreate = () => {
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [content, setContent] = useState('')
+  const [category, setCategory] = useState('')
+  const [author, setAuthor] = useState('')
+  const [images, setImages] = useState([])
+
+
+
+  const handleImageChange = (e)=>{
+    const files = Array.from(e.target.files);
+
+    if(files.length < 5){
+      alert("Please upload atleast 5 images.")
+      return;
+    }
+    setImages(files);
+
+  }
+
+
+  const uploadToCloudinary = async() =>{
+    const uploadedUrls = [];
+
+    for(const image of images){
+      const formData = new formData();
+      formData.append("images",image)   // here "images" is the key
+      formData.append("upload_preset",import.meta.env.CLOUDINARY_UPLOAD_PRESET);
+
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`,{
+        method:"POST",
+        body:formData,
+      });
+
+      const data = await response.json();
+
+      if(!response.ok){
+         throw new Error(data.error?.message || "Cloudinary upload failed");
+      }
+
+      uploadedUrls.push(data.secure_url);
+    }
+    return uploadedUrls;
+
+  };
+
+
+
+
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (images.length < 5) {
+    alert("Please upload at least 5 images.");
+    return;
+  }
+
+    try {
+      const imageUrls = await uploadToCloudinary();
+      const response = await api.post("/create", {
+        title,
+        description,
+        content,
+        category,
+        author,
+        images:imageUrls,
+      });
+
+      console.log(response.data)
+      alert("Blog created successfully.")
+
+      setTitle('')
+      setDescription('')
+      setContent('')
+      setCategory('')
+      setAuthor('')
+      setImages([])
+
+      e.target.reset();
+    }
+    catch (err) {
+      console.log(err.message);
+      alert("Something went wrong.")
+    }
+  }
+
+
   return (
     <main className="blogCreatePage">
       <Navbar />
@@ -37,7 +130,7 @@ const BlogCreate = () => {
 
 
         {/* Editor layout */}
-        <form className="editorLayout">
+        <form className="editorLayout" onSubmit={handleSubmit}>
 
           {/* =========================
               MAIN CONTENT
@@ -57,6 +150,8 @@ const BlogCreate = () => {
                 type="text"
                 required
                 placeholder="Give your story a title..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
 
@@ -73,6 +168,8 @@ const BlogCreate = () => {
                 rows="3"
                 required
                 placeholder="Write a short description of your blog..."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
 
@@ -94,6 +191,9 @@ const BlogCreate = () => {
                 name="content"
                 required
                 placeholder="Start writing your story here..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+
               />
             </div>
 
@@ -116,7 +216,8 @@ const BlogCreate = () => {
                 id="category"
                 name="category"
                 required
-                defaultValue=""
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="" disabled>
                   Select category
@@ -157,6 +258,8 @@ const BlogCreate = () => {
                 type="text"
                 required
                 placeholder="Author name"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
               />
             </div>
 
@@ -175,6 +278,7 @@ const BlogCreate = () => {
                   accept="image/*"
                   multiple
                   required
+                  onChange={handleImageChange}
                 />
 
                 <div className="uploadContent">
